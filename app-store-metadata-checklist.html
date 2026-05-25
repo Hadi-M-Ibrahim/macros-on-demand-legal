@@ -69,6 +69,7 @@
         <li><code>EXPO_PUBLIC_PRIVACY_POLICY_URL</code> should point to the Privacy Policy URL.</li>
         <li><code>EXPO_PUBLIC_TERMS_URL</code> should point to the Terms URL.</li>
         <li><code>EXPO_PUBLIC_EULA_URL</code> may remain Apple's Standard EULA URL unless a different reviewed EULA is adopted.</li>
+        <li>Account sync is not required for the default build. Only describe Sign in with Apple or Supabase-backed sync as available if production Supabase auth is configured for the submitted build.</li>
       </ul>
     </section>
 
@@ -80,7 +81,7 @@
         <li>Confirm subscription localization, review screenshots, pricing, and any monthly free-trial metadata match what the app displays through RevenueCat.</li>
         <li>Confirm the paywall links to Privacy, Terms, and Apple Standard EULA pages from the production build.</li>
         <li>Confirm Restore Purchases works in sandbox/TestFlight before review.</li>
-        <li>Deploy the Supabase <code>delete-account</code> Edge Function and confirm signed-in account deletion removes the Auth user before submitting.</li>
+        <li>If submitting a build with account sync enabled, deploy the Supabase <code>delete-account</code> Edge Function and confirm signed-in account deletion removes the Auth user before claiming in-app account deletion is available.</li>
       </ul>
     </section>
 
@@ -94,7 +95,7 @@
         <li>Purchases, because App Store purchases and RevenueCat entitlement metadata are used for Premium access.</li>
         <li>Location, because current location and city/ZIP search can be used for nearby restaurant ranking.</li>
         <li>User Content or Other Data, if saved meal identifiers, preferences, catalog review notes, or similar synced data are treated that way in App Store Connect.</li>
-        <li>Identifiers or Usage Data, because analytics events may include a signed-in user identifier and event properties.</li>
+        <li>Identifiers or Usage Data, if analytics events include a signed-in user identifier or event properties for this build.</li>
         <li>Diagnostics, only if Apple, Supabase, RevenueCat, or any future crash reporting setup collects diagnostic data for this build.</li>
       </ul>
     </section>
@@ -103,7 +104,7 @@
       <h2>Submission Notes</h2>
       <ul>
         <li>State that nutrition values are informational and may vary by restaurant location, customization, and menu changes.</li>
-        <li>State that Sign in with Apple is optional and used for Supabase-backed account sync.</li>
+        <li>State that no account is required for the default build. If production account sync is enabled for the submitted build, state that Sign in with Apple is optional and used for Supabase-backed account sync.</li>
         <li>State that the app offers Premium in-app purchases. If review is submitted with a hard paywall, state that core access requires Premium.</li>
         <li>State that Premium access is verified through RevenueCat and purchases are managed by Apple.</li>
         <li>Keep screenshots and metadata consistent with the live paywall, trial eligibility, and prices returned by App Store metadata.</li>
