@@ -84,7 +84,8 @@
       <h2>Data Retention</h2>
       <p>
         Local data remains on your device until you change app settings, clear data through app controls where available, or delete the app.
-        If optional account sync is enabled and used, synced account data may remain in Supabase until it is deleted through deployed app functionality, support action, or backend retention processes.
+        If optional account sync is enabled and used, synced account data may remain in Supabase until it is deleted through deployed app functionality or support action.
+        Supabase automatically limits catalog review storage to the latest 500 records per account and opt-in app analytics storage to the latest 5,000 events per account; the oldest record is removed when another accepted record would exceed its limit. Deleting the cloud account removes all remaining review and analytics rows for that account.
         Purchase records are retained by Apple and RevenueCat according to their own requirements and operational needs.
       </p>
     </section>
