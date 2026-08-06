@@ -24,7 +24,7 @@
 
   <main class="wrap">
     <section class="hero">
-      <p class="meta">Effective date: <time datetime="2026-07-10">July 10, 2026</time></p>
+      <p class="meta">Effective date: <time datetime="2026-08-05">August 5, 2026</time></p>
       <h1>Privacy Policy</h1>
       <p>
         This Privacy Policy explains how Macros On Demand handles information when you use the iOS app.
@@ -33,13 +33,15 @@
     </section>
 
     <section>
-      <h2>Information The App May Process</h2>
+      <h2>Information The App Processes</h2>
       <ul>
-        <li><strong>Nutrition preferences and app settings.</strong> Macro targets, calorie targets, restaurant preferences, hidden restaurants, maximum distance, generated recommendations, and saved meal identifiers may be stored locally on your device. If a submitted build enables optional account sync and you choose to use it, selected goals, preferences, and saved meals may also be synced through Supabase.</li>
-        <li><strong>Account information.</strong> The default build does not require an account. If a submitted build enables optional account sync and you choose to use Sign in with Apple, Apple may provide a user identifier and, depending on your Apple choice, your name and email address. Supabase may be used to authenticate and sync account data for configured sync builds.</li>
+        <li><strong>On-device preferences and app data.</strong> Macro and calorie targets, restaurant preferences, hidden restaurants, maximum distance, generated recommendations, saved meal identifiers, recent location-search context, and app settings are stored locally on your device.</li>
+        <li><strong>Account information.</strong> An account is optional. When you use Sign in with Apple, Apple provides an account identifier and may provide your name and email address, depending on the choices you make with Apple. The app sends the account identifier, email address, available name, and available profile-image URL to Supabase for authentication and account sync. Authentication tokens are stored in the iOS Keychain.</li>
+        <li><strong>Synced goals, preferences, and saved meals.</strong> When you sign in, the app syncs your calorie and macronutrient targets, macro-matching setting, preferred and hidden restaurant identifiers, maximum distance, and saved meal, restaurant, and menu-item identifiers through Supabase.</li>
         <li><strong>Purchase information.</strong> Premium purchases are handled by Apple through the App Store and by RevenueCat for entitlement management. The app may receive product identifiers, subscription status, entitlement status, transaction metadata, and RevenueCat customer identifiers. The app does not receive your full payment card number.</li>
         <li><strong>Location search information.</strong> If you grant location permission, the app may use your current device location, at the precision iOS provides, to rank nearby restaurants. You can also search by city or ZIP code, or use national results without device location. Current coordinates and recent search context may be stored locally to preserve app state. Apple location, geocoding, and maps services process location when you use these features; the app does not include coordinates in Supabase account sync or app analytics.</li>
-        <li><strong>Analytics events.</strong> If cloud services are configured, the app may record product events such as app open, onboarding completion, order generation, saved or unsaved meals, restaurant preference changes, account sync, catalog review, purchase completion, restore, and RevenueCat account-link status. These events may include event properties and, when signed in, a user identifier.</li>
+        <li><strong>Optional analytics events.</strong> Analytics sharing is off by default. If you turn it on while signed in, the app sends your Supabase user identifier, event names, and related properties to Supabase. Events cover app opens, onboarding, recommendation results, order generation, saved meals, restaurant preference changes, account sync, purchase and restore completion, and RevenueCat account-link status. The app does not persist signed-out analytics events.</li>
+        <li><strong>Catalog review records.</strong> When a signed-in user logs a catalog review checkpoint, the app sends the user identifier, restaurant and source identifiers, catalog status, and checkpoint note to Supabase.</li>
         <li><strong>Support information.</strong> If you contact support by email, the contents of your message and reply address are used to respond. If you contact support through GitHub Issues, the information you choose to post may be publicly visible on GitHub.</li>
       </ul>
     </section>
@@ -47,20 +49,21 @@
     <section>
       <h2>How Information Is Used</h2>
       <ul>
-        <li>Provide meal recommendations, saved meals, restaurant preferences, Premium access, and optional account sync when enabled and chosen.</li>
-        <li>Operate RevenueCat entitlement checks, App Store purchase restore flows, and, for configured sync builds, Sign in with Apple and Supabase sync.</li>
+        <li>Provide meal recommendations, saved meals, restaurant preferences, Premium access, and account sync when you choose to sign in.</li>
+        <li>Operate Sign in with Apple, Supabase sync and account deletion, RevenueCat entitlement checks, and App Store purchase and restore flows.</li>
         <li>Rank nearby restaurants when you enable location-based search.</li>
-        <li>Understand app behavior, troubleshoot issues, improve catalog quality, and verify that purchase and sync integrations are working.</li>
+        <li>When you enable analytics sharing, understand app behavior, troubleshoot issues, and verify that purchase and sync integrations are working.</li>
+        <li>Record catalog review checkpoints and improve catalog quality.</li>
         <li>Respond to support requests and comply with legal, security, or platform obligations.</li>
       </ul>
     </section>
 
     <section>
       <h2>Third-Party Services</h2>
-      <p>The app may rely on third-party services that process information under their own terms and policies:</p>
+      <p>The production app uses third-party services that process information under their own terms and policies:</p>
       <ul>
-        <li><strong>Apple.</strong> App Store purchases, device location permissions, geocoding, maps, subscription management, refunds, Apple account services, and Sign in with Apple if account sync is enabled for the submitted build.</li>
-        <li><strong>Supabase.</strong> Optional authentication, account profile data, preference sync, saved meal sync, catalog review records, and analytics event storage when configured for the submitted build.</li>
+        <li><strong>Apple.</strong> App Store purchases, device location permissions, geocoding, maps, subscription management, refunds, Apple account services, and Sign in with Apple.</li>
+        <li><strong>Supabase.</strong> Optional account authentication, profile data, preference and saved-meal sync, catalog review records, opt-in analytics storage, and account deletion.</li>
         <li><strong>RevenueCat.</strong> Premium entitlement status, offering/product metadata, subscription status, purchase restore state, and customer identifiers.</li>
         <li><strong>GitHub.</strong> Public documentation hosting through GitHub Pages and support requests submitted through GitHub Issues.</li>
       </ul>
@@ -72,11 +75,12 @@
     <section>
       <h2>Your Choices</h2>
       <ul>
-        <li>You can use core app features without signing in. Account sync is not required for the default build. For builds that enable sync, account sync requires Sign in with Apple and production Supabase configuration.</li>
+        <li>You can use core app features without signing in. Sign in with Apple is required only when you choose to sync account data.</li>
         <li>You can deny location permission and use city/ZIP search or national results instead.</li>
-        <li>You can opt out of optional app analytics from the Account privacy controls.</li>
+        <li>Analytics sharing is off by default. You can turn it on or off from the Account privacy controls; turning it off stops new analytics events from being sent.</li>
         <li>You can manage or cancel App Store subscriptions through your Apple account. Refund eligibility is handled by Apple.</li>
-        <li>You can delete local app data by deleting the app from your device. In-app cloud account deletion is available only for builds where production Supabase configuration and the <code>delete-account</code> function are deployed and verified. Cloud account deletion or correction follow-up can also be requested through the support page.</li>
+        <li>You can delete local app data by deleting the app from your device.</li>
+        <li>You can delete your cloud account from Account &gt; Delete Account. This removes the Supabase authentication account and app-owned profile, preference, saved-meal, catalog-review, and analytics rows. App Store subscriptions are managed separately and are not canceled by deleting the account. You can request deletion or correction follow-up through the support page.</li>
       </ul>
     </section>
 
@@ -84,9 +88,10 @@
       <h2>Data Retention</h2>
       <p>
         Local data remains on your device until you change app settings, clear data through app controls where available, or delete the app.
-        If optional account sync is enabled and used, synced account data may remain in Supabase until it is deleted through deployed app functionality or support action.
-        Supabase automatically limits catalog review storage to the latest 500 records per account and opt-in app analytics storage to the latest 5,000 events per account; the oldest record is removed when another accepted record would exceed its limit. Deleting the cloud account removes all remaining review and analytics rows for that account.
+        Supabase account profile, preference, and saved-meal data remains until you delete individual saved meals where available, delete your cloud account, or request support action.
+        Supabase limits catalog review storage to the latest 500 records per account and opt-in app analytics storage to the latest 5,000 events per account; the oldest record is removed when another accepted record would exceed its limit. Deleting the cloud account removes the remaining app-owned account, review, and analytics rows.
         Purchase records are retained by Apple and RevenueCat according to their own requirements and operational needs.
+        Support messages are retained as needed to answer your request, maintain support records, and meet legal or security obligations.
       </p>
     </section>
 
@@ -101,7 +106,8 @@
       <h2>Nutrition And Health Context</h2>
       <p>
         The app provides general nutrition information and restaurant meal recommendations. It is not medical advice, dietetic advice, allergy advice,
-        or a substitute for a qualified professional. Restaurant ingredients, preparation, availability, and nutrition values can vary.
+        or a substitute for a qualified professional. The current restaurant catalog and menu/nutrition baselines are focused on U.S. locations.
+        Restaurant ingredients, preparation, availability, prices, and nutrition values can vary by country and location.
       </p>
     </section>
 
@@ -124,7 +130,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>&copy; 2026 Macros On Demand. Last updated July 10, 2026.</p>
+      <p>&copy; 2026 Macros On Demand. Last updated August 5, 2026.</p>
     </div>
   </footer>
 </body>
